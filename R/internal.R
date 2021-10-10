@@ -1,5 +1,5 @@
 boldify <- function(x){
-  sprintf("<span style='font-weight: bold;'>%s</span>", x)
+  sprintf("<span style='font-weight: bold; font-style: italic;'>%s</span>", x)
 }
 
 redify <- function(x){
@@ -45,10 +45,12 @@ doLine <- function(splittedLine){
 
 doReport <- function(splittedHTMLreport, pyfile){
   lines <- vapply(splittedHTMLreport, doLine, character(1L))
-  line1 <-
-    paste0("<p style='background-color: #FFFF02;'>***** ", pyfile, " *****</p>")
+  line1 <- paste0(
+    "<h3 style='background-color: #FFFF02; text-align: center;'>***** ",
+    pyfile, " *****</h3>"
+  )
   lines <- c(line1, lines)
-  paste0(lines, collapse = "\n<br/>\n")
+  paste0(lines, collapse = "\n")
 }
 
 finalHTML <- function(pyfile){

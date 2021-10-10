@@ -8,11 +8,13 @@
 #' @importFrom htmlwidgets createWidget
 #' @importFrom utils URLencode
 #' @export
-pylint <- function(modules) {
+pylint <- function(modules){
+
+  HTMLreport <- pylintReport(modules)
 
   # forward options using x
   x = list(
-    html = HTMLreport
+    html = URLencode(HTMLreport)
   )
 
   # create widget
@@ -57,7 +59,7 @@ pylintROutput <- function(outputId, width = "100%", height = "400px"){
 #' @rdname pylintR-shiny
 #' @importFrom htmlwidgets shinyRenderWidget
 #' @export
-renderPylintR <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderPylintR <- function(expr, env = parent.frame(), quoted = FALSE){
   if(!quoted){ expr <- substitute(expr) } # force quoted
   shinyRenderWidget(expr, pylintROutput, env, quoted = TRUE)
 }
