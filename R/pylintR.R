@@ -1,25 +1,28 @@
-#' <Add Title>
+#' @title Run 'pylint' on a file or a folder
 #'
-#' <Add Description>
+#' @description Run 'pylint' on a file or a folder.
+#'
+#' @param modules one or more Python files, or a folder containing Python files
+#' @return A \code{htmlwidget} object.
 #'
 #' @importFrom htmlwidgets createWidget
 #' @importFrom utils URLencode
 #' @export
-pylint <- function(modules, width = NULL, height = NULL, elementId = NULL) {
+pylint <- function(modules) {
 
   # forward options using x
   x = list(
-    message = message
+    html = HTMLreport
   )
 
   # create widget
   createWidget(
     name = "pylintR",
     x,
-    width = width,
-    height = height,
+    width = NULL,
+    height = NULL,
     package = "pylintR",
-    elementId = elementId
+    elementId = NULL
   )
 }
 
@@ -37,6 +40,11 @@ pylint <- function(modules, width = NULL, height = NULL, elementId = NULL) {
 #' @param quoted whether \code{expr} is a quoted expression
 #'   (with \code{quote()}); this is useful if you want to save an expression
 #'   in a variable
+#'
+#' @return \code{pylintROutput} returns an output element that can be included
+#'   in a Shiny UI definition, and \code{renderPylintR} returns a
+#'   \code{shiny.render.function} object that can be included in a Shiny
+#'   server definition.
 #'
 #' @importFrom htmlwidgets shinyWidgetOutput
 #' @name pylintR-shiny
