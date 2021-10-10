@@ -1,9 +1,9 @@
 Name: Pylint file
 Description: Run 'pylint' on current file.
 Binding: pylintFile
-Interactive: false
+Interactive: true
 
 Name: Pylint folder
 Description: Run 'pylint' on current folder.
 Binding: pylintFolder
-Interactive: false
+Interactive: true
