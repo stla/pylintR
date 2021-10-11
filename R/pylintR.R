@@ -27,6 +27,14 @@
 #' }
 pylint <- function(modules){
 
+  find_pylint <- Sys.which("pylint") != ""
+  if(!find_pylint){
+    stop(
+      "This package requires 'pylint'. ",
+      "Either it is not installed or it is not found."
+    )
+  }
+
   HTMLreport <- pylintReport(modules)
 
   # forward options using x

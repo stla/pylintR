@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^inst/essais$
 ^LICENSE$
+^cran-comments\.md$
+^README\.md$
