@@ -8,6 +8,23 @@
 #' @importFrom htmlwidgets createWidget
 #' @importFrom utils URLencode
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' sample_code_file <- system.file("sample_code.py", package = "pylintR")
+#' code_lines <- readLines(sample_code_file)
+#' nlines <- length(code_lines)
+#' # Here is the code:
+#' cat(paste0(format(seq_len(nlines), width = 2), ") ", code_lines), sep = "\n")
+#' # let's copy this Python file in a temporary folder
+#' file_copy <- tempfile(fileext = ".py")
+#' file.copy(sample_code_file, file_copy)
+#' wd <- setwd(tempdir())
+#' # let's lint it with pylint:
+#' pylint(basename(file_copy))
+#' # restore current directory
+#' setwd(wd)
+#' }
 pylint <- function(modules){
 
   HTMLreport <- pylintReport(modules)
